@@ -1,4 +1,53 @@
 {
-    "username": "julio.lima",
-    "senha": "123456"
+    "valido": {
+        "username": "julio.lima",
+        "senha": "123456"
+    },
+    "usuarioVazio": {
+        "username": "",
+        "senha": "123456"
+    },
+    "senhaVazia": {
+        "username": "julio.lima",
+        "senha": ""
+    },
+    "usuarioESenhaVazios": {
+        "username": "",
+        "senha": ""
+    },
+    "usuarioInvalido": {
+        "username": "usuario.inexistente",
+        "senha": "123456"
+    },
+    "senhaInvalida": {
+        "username": "julio.lima",
+        "senha": "senhaerrada"
+    },
+    "credenciaisInvalidas": {
+        "username": "abc",
+        "senha": "xyz"
+    },
+    "usernameNumero": {
+        "username": 123,
+        "senha": "123456"
+    },
+    "senhaNumero": {
+        "username": "julio.lima",
+        "senha": 123456
+    },
+    "usernameAusente": {
+        "senha": "123456"
+    },
+    "senhaAusente": {
+        "username": "julio.lima"
+    },
+    "bodyVazio": {},
+    "usernameComEspacos": {
+        "username": "   julio.lima   ",
+        "senha": "123456"
+    },
+    "senhaComEspacos": {
+        "username": "julio.lima",
+        "senha": " 123456 "
+    }
 }
