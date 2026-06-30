@@ -10,7 +10,7 @@ API de login aceita tipo inválido no campo "senha" sem validação de schema
 Lucia de Melo
 
 ## Data e Hora
-23/06/2026 - 18:40
+29/06/2026 - 18:40
 
 ## Resultado Esperado
 O sistema deve validar o tipo dos campos enviados no endpoint de login.
