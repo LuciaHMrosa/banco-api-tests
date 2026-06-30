@@ -97,33 +97,45 @@ describe('Login', () => {
             expect(resposta.body.error).to.equal('Usuário ou senha inválidos.');
         })
 
-        it('CT-LOGIN-008 - Validar username como número', async () => {
+        it('CT-LOGIN-008 - Validar rejeição de tipo inválido no campo "username"', async () => {
+
             const bodyLogin = postLogin.usernameNumero;
+
+
 
             const resposta = await request(process.env.BASE_URL)
                 .post('/login')
                 .set('Content-Type', 'application/json')
-                .send(bodyLogin)
+                .send(bodyLogin);
 
             expect(resposta.status).to.equal(401);
             expect(resposta.body).to.have.property('error');
             expect(resposta.body.error).to.equal('Usuário ou senha inválidos.');
-        })
+            expect(bodyLogin.username).to.be.a('number');
+            expect(bodyLogin.senha).to.be.a('string');
+            expect(resposta.body).to.not.have.property('token');
+        });
 
-        it('CT-LOGIN-009 - Validar password como número', async () => {
+        it('CT-LOGIN-009 - Validar rejeição de tipo inválido no campo "senha"', async () => {
+
             const bodyLogin = postLogin.senhaNumero;
+
+            // Validação do payload enviado
+            expect(bodyLogin.username).to.be.a('string');
+            expect(bodyLogin.senha).to.be.a('number');
 
             const resposta = await request(process.env.BASE_URL)
                 .post('/login')
                 .set('Content-Type', 'application/json')
-                .send(bodyLogin)
+                .send(bodyLogin);
 
+            // Validação da resposta esperada
             expect(resposta.status).to.equal(400);
             expect(resposta.body).to.have.property('error');
-            expect(resposta.body.senha).to.be.a('string');
-            expect(resposta.body.error).to.equal('Usuário ou senha são obrigatórios.');
+            expect(resposta.body.error).to.equal('Usuário e senha são obrigatórios.');
             expect(resposta.body).to.not.have.property('token');
-        })
+        });
+
         it('CT-LOGIN-010 - Validar ausência do campo username', async () => {
             const bodyLogin = postLogin.usernameAusente;
 
